@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _karakterPaketi;
 
+    [SerializeField] private List<Animator> _karakterAnimators = new List<Animator>();
+
+    private int _karakterNumarasi;
+
     private int _elmasSayisi;
 
     private GameObject _player;
@@ -23,11 +27,17 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+
     void Start()
     {
         LevelStart();
 
         _uiController = GameObject.Find("UIController").GetComponent<UIController>();
+
+        _karakterNumarasi = 0;
+
+
 
     }
 
@@ -70,9 +80,12 @@ public class PlayerController : MonoBehaviour
         _karakterPaketi.transform.position = new Vector3(0, 0, 0);
         _karakterPaketi.transform.rotation = Quaternion.Euler(0, 0, 0);
         _player = GameObject.FindWithTag("Player");
-        _player.transform.localPosition = new Vector3(0, 1, 0);
+        _player.transform.localPosition = new Vector3(0, 0.5f, 0);
     }
     
-
+    public void RunningAnimationTrue()
+    {
+        _karakterAnimators[0].SetBool("isRunning", true);
+    }
 
 }

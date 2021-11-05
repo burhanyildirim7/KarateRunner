@@ -76,6 +76,8 @@ public class UIController : MonoBehaviour
         GameController._oyunAktif = true;
         _tapToStartPanel.SetActive(false);
         _gameScreenPanel.SetActive(true);
+        _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        _playerController.RunningAnimationTrue();
     }
 
     public void WinScreenPanelOpen()
