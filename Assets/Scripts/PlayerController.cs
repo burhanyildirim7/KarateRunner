@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private int _karakterNumarasi;
 
-    private int _karakterSeviyesi;
+    private int _karakterSeviyesi=0;
 
     private int _elmasSayisi;
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private int _toplananElmasSayisi;
 
-    private int checkRadius = 2;
+    private int checkRadius = 4;
 
 
 
@@ -51,11 +51,19 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (Physics.CheckSphere(transform.position, 3, wallLayer))
+        Debug.Log(_karakterSeviyesi);
+        if (Physics.CheckSphere(transform.position, checkRadius, wallLayer))
         {
-            _karakterAnimators[0].SetBool("isRunning", false);
-            _karakterAnimators[0].SetBool("isPunch", true);
+            //_karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+            _karakterAnimators[_karakterSeviyesi].SetBool("isAttack", true);
+            StartCoroutine(nameof(endAttackAnimation));
         }
+    }
+    IEnumerator endAttackAnimation()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isAttack", false);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,7 +80,13 @@ public class PlayerController : MonoBehaviour
         {
             _kusakSayisi++;
             if (_kusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
+            {
+                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
                 _karakterSeviyesi++;
+                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true); 
+                _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
+
+            }
             _kusakSlider.value = _kusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
             Destroy(collision.gameObject);
         }
@@ -100,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     public void RunningAnimationTrue()
     {
-        _karakterAnimators[0].SetBool("isRunning", true);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
     }
 
 }

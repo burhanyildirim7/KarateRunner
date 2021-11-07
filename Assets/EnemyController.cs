@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
         {
             transform.LookAt(other.transform);
             GetComponent<Animator>().SetBool("isWalk", false);
-            GetComponent<Animator>().SetBool("isPunch", true);
+            GetComponent<Animator>().SetBool("isAttack", true);
         }
     }
 }
