@@ -13,17 +13,29 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _karakterPaketi;
 
+    [SerializeField] private Slider _kusakSlider;
+
+    [SerializeField] private int _levelAtlamakIcinGerekenKusakSayisi;
+
     [SerializeField] private List<Animator> _karakterAnimators = new List<Animator>();
+
+    [SerializeField] private LayerMask wallLayer;
 
     private int _karakterNumarasi;
 
+    private int _karakterSeviyesi;
+
     private int _elmasSayisi;
+
+    private int _kusakSayisi;
 
     private GameObject _player;
 
     private UIController _uiController;
 
     private int _toplananElmasSayisi;
+
+    private int checkRadius = 2;
 
 
 
@@ -36,28 +48,35 @@ public class PlayerController : MonoBehaviour
         _uiController = GameObject.Find("UIController").GetComponent<UIController>();
 
         _karakterNumarasi = 0;
-
-
-
+    }
+    private void Update()
+    {
+        if (Physics.CheckSphere(transform.position, 3, wallLayer))
+        {
+            _karakterAnimators[0].SetBool("isRunning", false);
+            _karakterAnimators[0].SetBool("isPunch", true);
+        }
     }
 
-
-
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-  
-        if (other.tag == "Elmas")
+
+        if (collision.gameObject.tag == "Elmas")
         {
             _elmasSayisi += 1;
             _toplananElmasSayisi += 1;
             PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
         }
-        else
+        if (collision.gameObject.tag == "Kusak")
         {
-
+            _kusakSayisi++;
+            if (_kusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
+                _karakterSeviyesi++;
+            _kusakSlider.value = _kusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
+            Destroy(collision.gameObject);
         }
+
     }
 
     private void WinScreenAc()
@@ -69,10 +88,6 @@ public class PlayerController : MonoBehaviour
     {
         _uiController.LoseScreenPanelOpen();
     }
-
-
-    
-
     public void LevelStart()
     {
         _toplananElmasSayisi = 1;
@@ -82,7 +97,7 @@ public class PlayerController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _player.transform.localPosition = new Vector3(0, 0.5f, 0);
     }
-    
+
     public void RunningAnimationTrue()
     {
         _karakterAnimators[0].SetBool("isRunning", true);
