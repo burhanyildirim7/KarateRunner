@@ -10,6 +10,7 @@ TagManager:
   - Elmas
   - Kusak
   - Duvar
+  - Enemy
   layers:
   - Default
   - TransparentFX

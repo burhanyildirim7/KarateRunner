@@ -13,21 +13,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _karakterPaketi;
 
-    [SerializeField] private Slider _kusakSlider;
-
-    [SerializeField] private int _levelAtlamakIcinGerekenKusakSayisi;
-
-    [SerializeField] private List<Animator> _karakterAnimators = new List<Animator>();
-
-    [SerializeField] private LayerMask wallLayer;
 
     private int _karakterNumarasi;
 
-    private int _karakterSeviyesi=0;
-
     private int _elmasSayisi;
-
-    private int _kusakSayisi;
 
     private GameObject _player;
 
@@ -35,15 +24,26 @@ public class PlayerController : MonoBehaviour
 
     private int _toplananElmasSayisi;
 
-    private int checkRadius = 4;
 
+    public int _levelAtlamakIcinGerekenKusakSayisi;
 
+    public int _toplananKusakSayisi;
 
+    public int kusakLevelCarpani = 1;
+
+    public List<Animator> _karakterAnimators = new List<Animator>();
+
+    public int _karakterSeviyesi = 0;
+
+    public Slider _kusakSlider;
+
+    public Text karakterLevelText;
 
 
     void Start()
     {
         LevelStart();
+        _karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
 
         _uiController = GameObject.Find("UIController").GetComponent<UIController>();
 
@@ -51,12 +51,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(_karakterSeviyesi);
-        if (Physics.CheckSphere(transform.position, checkRadius, wallLayer))
+        karakterLevelText.text = "Level "+(_toplananKusakSayisi * kusakLevelCarpani).ToString();
+        if (_toplananKusakSayisi < 0)
         {
-            //_karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
-            _karakterAnimators[_karakterSeviyesi].SetBool("isAttack", true);
-            StartCoroutine(nameof(endAttackAnimation));
+            LoseScreenAc();
         }
     }
     IEnumerator endAttackAnimation()
@@ -78,16 +76,15 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Kusak")
         {
-            _kusakSayisi++;
-            if (_kusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
+            _toplananKusakSayisi++;
+            if (_toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
             {
                 _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
                 _karakterSeviyesi++;
-                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true); 
+                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
                 _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
-
             }
-            _kusakSlider.value = _kusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
+            _kusakSlider.value = _toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
             Destroy(collision.gameObject);
         }
 
@@ -100,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
     private void LoseScreenAc()
     {
+        _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
         _uiController.LoseScreenPanelOpen();
     }
     public void LevelStart()
