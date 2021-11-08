@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149722831067653713}
   m_Layer: 0
-  m_Name: "Kus\u0327ak 1"
+  m_Name: "Kus\u0327ak 6"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,10 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 149722831067653713}
     m_Modifications:
-    - target: {fileID: 3112730223792406307, guid: 462b15a103dd44f349b9e210b0ca7364, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: aeff74b2a0d6c734aaabc7c768ba32a5, type: 2}
     - target: {fileID: 3829942249751854099, guid: 462b15a103dd44f349b9e210b0ca7364, type: 3}
       propertyPath: m_Name
       value: Man_karate_1p1_Defintion10
@@ -105,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 5253096659454043386, guid: 462b15a103dd44f349b9e210b0ca7364, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: aeff74b2a0d6c734aaabc7c768ba32a5, type: 2}
+      objectReference: {fileID: 2100000, guid: ca59fec251f0d7f48a0b6f00c6035a81, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 462b15a103dd44f349b9e210b0ca7364, type: 3}
 --- !u!4 &2890136150313120831 stripped
