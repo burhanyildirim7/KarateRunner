@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     public Text karakterLevelText;
 
+    private int _playerLevel;
+
 
     void Start()
     {
@@ -48,13 +50,24 @@ public class PlayerController : MonoBehaviour
         _uiController = GameObject.Find("UIController").GetComponent<UIController>();
 
         _karakterNumarasi = 0;
+        _toplananKusakSayisi = 0;
+        _playerLevel = 0;
+
+
     }
     private void Update()
     {
-        karakterLevelText.text = "Level "+(_toplananKusakSayisi * kusakLevelCarpani).ToString();
-        if (_toplananKusakSayisi < 0)
+        _playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
+        karakterLevelText.text = "Lv " + _playerLevel.ToString();
+        if (GameController._oyunAktif == true && _toplananKusakSayisi < 0)
         {
-            LoseScreenAc();
+            GameController._oyunAktif = false;
+            _playerLevel = 0;
+            _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+            //_karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
+            //_karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
+            Invoke("PlayerDeadAnimation", 0.5f);
+            Invoke("LoseScreenAc", 2f);
         }
     }
     IEnumerator endAttackAnimation()
@@ -64,7 +77,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void PlayerDeadAnimation()
+    {
+        _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
+    }
+
+    private void OnTriggerEnter(Collider collision)
     {
 
         if (collision.gameObject.tag == "Elmas")
@@ -76,15 +94,24 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Kusak")
         {
-            _toplananKusakSayisi++;
-            if (_toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
+            if (_playerLevel < 100)
             {
-                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
-                _karakterSeviyesi++;
-                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
-                _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
+                _toplananKusakSayisi++;
+                if (_toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
+                {
+
+                    _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
+                    _karakterSeviyesi++;
+                    _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
+                    _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
+                }
+                _kusakSlider.value = _toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
             }
-            _kusakSlider.value = _toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
+            else
+            {
+                _playerLevel = 99;
+            }
+
             Destroy(collision.gameObject);
         }
 
@@ -97,13 +124,17 @@ public class PlayerController : MonoBehaviour
 
     private void LoseScreenAc()
     {
-        _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
-        _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
+        // _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+        // _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
         _uiController.LoseScreenPanelOpen();
     }
     public void LevelStart()
     {
         _toplananElmasSayisi = 1;
+        _toplananKusakSayisi = 0;
+        _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isIdle", true);
         _elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
         _karakterPaketi.transform.position = new Vector3(0, 0, 0);
         _karakterPaketi.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -113,6 +144,7 @@ public class PlayerController : MonoBehaviour
 
     public void RunningAnimationTrue()
     {
+        _karakterAnimators[_karakterSeviyesi].SetBool("isIdle", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
     }
 

@@ -11,6 +11,7 @@ TagManager:
   - Kusak
   - Duvar
   - Enemy
+  - Missile
   layers:
   - Default
   - TransparentFX

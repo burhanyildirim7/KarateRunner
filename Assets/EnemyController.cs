@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     public int enemyLevel;
     public Text enemyLevelText;
 
+    [SerializeField] private bool _idleEnemy;
+    [SerializeField] private bool _runningEnemy;
+
     private PlayerController playerController;
     private void Start()
     {
@@ -22,7 +25,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && enemyLevel > playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
+        if (other.gameObject.tag == "Player" && enemyLevel > playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
         {
             transform.LookAt(other.transform);
             GetComponent<Animator>().SetBool("isWalk", false);
@@ -34,11 +37,25 @@ public class EnemyController : MonoBehaviour
                 playerController._karakterAnimators[playerController._karakterSeviyesi].gameObject.SetActive(false);
                 playerController._karakterSeviyesi--;
                 playerController._karakterAnimators[playerController._karakterSeviyesi].gameObject.SetActive(true);
+
                 playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isRunning", true);
+
+
             }
             if (playerController._toplananKusakSayisi >= 0)
                 playerController._kusakSlider.value = playerController._toplananKusakSayisi % playerController._levelAtlamakIcinGerekenKusakSayisi;
         }
+        else
+        {
+            Invoke("EnemyDead", 0.5f);
+            //EnemyDead();
+        }
+    }
+
+    private void EnemyDead()
+    {
+        GetComponent<Animator>().SetBool("isWalk", false);
+        GetComponent<Animator>().SetBool("isDead", true);
     }
 }
 
