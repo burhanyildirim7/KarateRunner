@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
 
     private int _playerLevel;
 
+    private int _oyunSonuXDegeri;
+
+    private int _oyunSonuElmasDeger;
+
 
     void Start()
     {
@@ -52,13 +56,16 @@ public class PlayerController : MonoBehaviour
         _karakterNumarasi = 0;
         _toplananKusakSayisi = 0;
         _playerLevel = 0;
+        _toplananElmasSayisi = 1;
+
+        _elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
 
 
     }
     private void Update()
     {
-        _playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
-        karakterLevelText.text = "Lv " + _playerLevel.ToString();
+
+
         if (GameController._oyunAktif == true && _toplananKusakSayisi < 0)
         {
             GameController._oyunAktif = false;
@@ -69,6 +76,12 @@ public class PlayerController : MonoBehaviour
             Invoke("PlayerDeadAnimation", 0.5f);
             Invoke("LoseScreenAc", 2f);
         }
+        else
+        {
+            //_playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
+        }
+
+        karakterLevelText.text = "Lv " + _playerLevel.ToString();
     }
     IEnumerator endAttackAnimation()
     {
@@ -82,21 +95,24 @@ public class PlayerController : MonoBehaviour
         _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
 
-        if (collision.gameObject.tag == "Elmas")
+        if (other.gameObject.tag == "Elmas")
         {
             _elmasSayisi += 1;
             _toplananElmasSayisi += 1;
             PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
-        if (collision.gameObject.tag == "Kusak")
+        else if (other.gameObject.tag == "Kusak")
         {
             if (_playerLevel < 100)
             {
                 _toplananKusakSayisi++;
+
+                _playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
+
                 if (_toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
                 {
 
@@ -112,13 +128,191 @@ public class PlayerController : MonoBehaviour
                 _playerLevel = 99;
             }
 
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "X1")
+        {
+            _oyunSonuXDegeri = 1;
+
+            if (_playerLevel >= 0 && _playerLevel < 10)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X2")
+        {
+            _oyunSonuXDegeri = 2;
+
+            if (_playerLevel >= 10 && _playerLevel < 20)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X3")
+        {
+            _oyunSonuXDegeri = 3;
+
+            if (_playerLevel >= 20 && _playerLevel < 30)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X4")
+        {
+            _oyunSonuXDegeri = 4;
+
+            if (_playerLevel >= 30 && _playerLevel < 40)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X5")
+        {
+            _oyunSonuXDegeri = 5;
+
+            if (_playerLevel >= 40 && _playerLevel < 50)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X6")
+        {
+            _oyunSonuXDegeri = 6;
+
+            if (_playerLevel >= 50 && _playerLevel < 60)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X7")
+        {
+            _oyunSonuXDegeri = 7;
+
+            if (_playerLevel >= 60 && _playerLevel < 70)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X8")
+        {
+            _oyunSonuXDegeri = 8;
+
+            if (_playerLevel >= 70 && _playerLevel < 80)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X9")
+        {
+            _oyunSonuXDegeri = 9;
+
+            if (_playerLevel >= 80 && _playerLevel < 90)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+
+        }
+        else if (other.gameObject.tag == "X10")
+        {
+            _oyunSonuXDegeri = 10;
+
+        }
+        else if (other.gameObject.tag == "BitirmeCizgisi")
+        {
+            if (_playerLevel >= 90)
+            {
+                GameController._oyunAktif = false;
+                WinScreenAc();
+            }
+            else
+            {
+
+            }
+        }
+        else if (other.gameObject.tag == "FinishLevel")
+        {
+            GameController._finishlevel = true;
+            _karakterPaketi.transform.position = new Vector3(0, 0, _karakterPaketi.transform.position.z);
+            _player.transform.localPosition = new Vector3(0, 0.5f, 0);
+
+        }
+        else
+        {
+
         }
 
     }
 
+    private void OyunSonuElmasHesaplama()
+    {
+        _oyunSonuElmasDeger = 0;
+        //_elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
+        _oyunSonuElmasDeger = (_oyunSonuXDegeri * _toplananElmasSayisi);
+        //_oyunSonuElmasDeger = _elmasSayisi;
+        //PlayerPrefs.SetInt("OyunSonuElmasDeger", _oyunSonuElmasDeger);
+        //PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
+
+        _uiController.LevelSonuElmasSayisi(_oyunSonuElmasDeger);
+    }
+
     private void WinScreenAc()
     {
+        _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isIdle", true);
+        OyunSonuElmasHesaplama();
         _uiController.WinScreenPanelOpen();
     }
 
@@ -126,12 +320,16 @@ public class PlayerController : MonoBehaviour
     {
         // _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
         // _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
+        OyunSonuElmasHesaplama();
         _uiController.LoseScreenPanelOpen();
     }
     public void LevelStart()
     {
+        GameController._finishlevel = false;
         _toplananElmasSayisi = 1;
         _toplananKusakSayisi = 0;
+        _oyunSonuXDegeri = 0;
+        _playerLevel = 0;
         _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isIdle", true);

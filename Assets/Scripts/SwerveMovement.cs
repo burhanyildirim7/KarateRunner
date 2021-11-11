@@ -21,7 +21,7 @@ public class SwerveMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameController._oyunAktif == true)
+        if (GameController._oyunAktif == true && GameController._finishlevel == false)
         {
             centerPosition = _getPoint.transform.position;
 
@@ -49,13 +49,13 @@ public class SwerveMovement : MonoBehaviour
 
         }
 
-          
 
 
-       
 
-      
-        
-       
+
+
+
+
+
     }
 }
