@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public int enemyLevel;
     public Text enemyLevelText;
+    public GameObject enemyCanvas;
 
     [SerializeField] private bool _idleEnemy;
     [SerializeField] private bool _runningEnemy;
@@ -15,17 +16,19 @@ public class EnemyController : MonoBehaviour
     private PlayerController playerController;
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
-        enemyLevelText.text = enemyLevel.ToString();
+        enemyLevelText.text = "Lv. " + enemyLevel.ToString();
     }
     private void Update()
     {
-        enemyLevelText.gameObject.transform.parent.LookAt(Camera.main.transform);
+        enemyCanvas.gameObject.transform.LookAt(Camera.main.transform);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && enemyLevel > playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
+
+        if (other.gameObject.tag == "Player" && enemyLevel > PlayerController._playerLevel)
         {
             transform.LookAt(other.transform);
             GetComponent<Animator>().SetBool("isWalk", false);
@@ -36,6 +39,7 @@ public class EnemyController : MonoBehaviour
             {
                 playerController._karakterAnimators[playerController._karakterSeviyesi].gameObject.SetActive(false);
                 playerController._karakterSeviyesi--;
+                //PlayerController._playerLevel = PlayerController._playerLevel - 1;
                 playerController._karakterAnimators[playerController._karakterSeviyesi].gameObject.SetActive(true);
 
                 playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isRunning", true);
@@ -45,11 +49,11 @@ public class EnemyController : MonoBehaviour
             if (playerController._toplananKusakSayisi >= 0)
                 playerController._kusakSlider.value = playerController._toplananKusakSayisi % playerController._levelAtlamakIcinGerekenKusakSayisi;
         }
-        else
+        else if (other.gameObject.tag == "Player" && enemyLevel < playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
         {
             Invoke("EnemyDead", 0.5f);
-            //EnemyDead();
         }
+
     }
 
     private void EnemyDead()

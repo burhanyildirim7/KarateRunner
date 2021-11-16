@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public Text karakterLevelText;
 
-    private int _playerLevel;
+    public static int _playerLevel;
 
     private int _oyunSonuXDegeri;
 
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
             GameController._oyunAktif = false;
             _playerLevel = 0;
             _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+
             //_karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
             //_karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
             Invoke("PlayerDeadAnimation", 0.5f);
@@ -81,7 +82,17 @@ public class PlayerController : MonoBehaviour
             //_playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
         }
 
-        karakterLevelText.text = "Lv " + _playerLevel.ToString();
+        if (_playerLevel > 0)
+        {
+            _playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
+        }
+        else
+        {
+
+        }
+
+
+        karakterLevelText.text = "Lv. " + _playerLevel.ToString();
     }
     IEnumerator endAttackAnimation()
     {
@@ -107,7 +118,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.tag == "Kusak")
         {
-            if (_playerLevel < 100)
+            if (_playerLevel < 99)
             {
                 _toplananKusakSayisi++;
 
@@ -330,6 +341,10 @@ public class PlayerController : MonoBehaviour
         _toplananKusakSayisi = 0;
         _oyunSonuXDegeri = 0;
         _playerLevel = 0;
+        _kusakSlider.value = 0;
+        _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
+        _karakterSeviyesi = 0;
+        _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
         _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isIdle", true);

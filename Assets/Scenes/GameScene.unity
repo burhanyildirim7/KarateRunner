@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 48398327}
   m_Layer: 6
   m_Name: Radar
-  m_TagString: Untagged
+  m_TagString: Radar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.047169082, y: 0.10676786}
   m_AnchorMax: {x: 0.96537685, y: 0.16481249}
-  m_AnchoredPosition: {x: -5.000061, y: 0.5}
+  m_AnchoredPosition: {x: -5.0000305, y: 0.5}
   m_SizeDelta: {x: -10, y: -5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107127427
@@ -2913,7 +2913,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 688573151}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 10
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -3110,7 +3110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.047169082, y: 0.0838884}
   m_AnchorMax: {x: 0.96537685, y: 0.18832591}
-  m_AnchoredPosition: {x: -3.500061, y: 0}
+  m_AnchoredPosition: {x: -3.5000305, y: 0}
   m_SizeDelta: {x: -9, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394773841
@@ -3376,7 +3376,7 @@ MonoBehaviour:
   _iyiToplanabilirDeger: 2
   "_k\xF6t\xFCToplanabilirDeger": 2
   _karakterPaketi: {fileID: 2018247884}
-  _levelAtlamakIcinGerekenKusakSayisi: 5
+  _levelAtlamakIcinGerekenKusakSayisi: 10
   _toplananKusakSayisi: 20
   kusakLevelCarpani: 2
   _karakterAnimators:
@@ -4059,7 +4059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -25,6 +25,7 @@ TagManager:
   - BitirmeCizgisi
   - X5
   - FinishLevel
+  - Radar
   layers:
   - Default
   - TransparentFX

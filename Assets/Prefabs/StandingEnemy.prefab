@@ -328,9 +328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130b2e285cf65f34a99b82bff038ac1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   enemyLevel: 5
   enemyLevelText: {fileID: 3284719920037763079}
+  enemyCanvas: {fileID: 2798720868988560312}
   _idleEnemy: 1
   _runningEnemy: 0
 --- !u!95 &8739064560739384297
@@ -606,13 +606,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030445773045602476}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7819290988505370024}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0.37471455}
   m_AnchorMax: {x: 1, y: 0.62600005}
   m_AnchoredPosition: {x: -0.014129639, y: -0.11225891}
