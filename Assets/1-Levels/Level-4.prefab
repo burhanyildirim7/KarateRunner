@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 120}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1642729222079630573}
   - {fileID: 1642729222176945261}
@@ -58,6 +59,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4953096735107717556}
   - {fileID: 4953096734167829889}
@@ -94,6 +96,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4953096734323062959}
   - {fileID: 8070412217955688922}
@@ -132,6 +135,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4953096734439492929}
   - {fileID: 4953096735192783573}
@@ -164,6 +168,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1642729223299624886}
   - {fileID: 1642729222307630570}
@@ -199,6 +204,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6505038463668645112}
   - {fileID: 834353157809960616}
@@ -234,6 +240,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6804620655483795770}
   - {fileID: 6804620657239248209}
@@ -267,6 +274,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1642729222538395514}
   - {fileID: 1642729222334908420}
@@ -302,6 +310,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4953096734308034431}
   - {fileID: 4953096734988034995}
@@ -335,6 +344,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 834353157538932977}
   - {fileID: 834353158303220727}
@@ -690,6 +700,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
       value: 
@@ -821,6 +835,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: m_Name
       value: WalkerEnemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091387428347112122, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
+      propertyPath: KarakterLeveli
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 4951850930044799352, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: player
@@ -1271,6 +1289,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
@@ -2920,6 +2942,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
       value: 
@@ -3490,6 +3516,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
       value: 
@@ -4007,6 +4037,10 @@ PrefabInstance:
       value: StylizedWater/Mobile
       objectReference: {fileID: 0}
     - target: {fileID: 114000011924948938, guid: 4be443cc50afcd0478e5b4d4f2f6cb53, type: 3}
+      propertyPath: shaderIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011924948938, guid: 4be443cc50afcd0478e5b4d4f2f6cb53, type: 3}
       propertyPath: enableNormalMap
       value: 0
       objectReference: {fileID: 0}
@@ -4016,15 +4050,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000011924948938, guid: 4be443cc50afcd0478e5b4d4f2f6cb53, type: 3}
       propertyPath: isMobilePlatform
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000011924948938, guid: 4be443cc50afcd0478e5b4d4f2f6cb53, type: 3}
       propertyPath: shaderNames.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000011924948938, guid: 4be443cc50afcd0478e5b4d4f2f6cb53, type: 3}
       propertyPath: shaderNames.Array.data[0]
-      value: Mobile
+      value: Desktop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be443cc50afcd0478e5b4d4f2f6cb53, type: 3}
@@ -4091,6 +4125,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: m_Name
       value: WalkerEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091387428347112122, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
+      propertyPath: KarakterLeveli
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4951850930044799352, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: player

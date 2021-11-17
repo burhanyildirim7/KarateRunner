@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     private PlayerController playerController;
     private void Start()
     {
+        enemyLevel = karakterSecimiVeLevel.tempKarakterLevel;
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
         enemyLevelText.text = "Lv. " + enemyLevel.ToString();

@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6746633695758742139}
   - {fileID: 6746633695446487453}
@@ -61,6 +62,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1139429549708599536}
   - {fileID: 1139429547850766451}
@@ -94,6 +96,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1139429548349361041}
   - {fileID: 1139429549257523224}
@@ -131,6 +134,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2635488933577208065}
   - {fileID: 2635488932805068454}
@@ -173,6 +177,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4681713746819604462}
   - {fileID: 4681713747436953299}
@@ -231,6 +236,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 120}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6746633694466555155}
   - {fileID: 6746633695522053288}
@@ -263,6 +269,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1139429549347998719}
   - {fileID: 1139429548688458283}
@@ -295,6 +302,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4681713747370343315}
   - {fileID: 4681713748571697756}
@@ -330,6 +338,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1513808094369690866}
   - {fileID: 1513808093347731055}
@@ -363,6 +372,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6746633696251752167}
   - {fileID: 6746633695014802954}
@@ -1179,6 +1189,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 78
+      objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
       value: 
@@ -1524,6 +1538,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
@@ -2219,6 +2237,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 66
+      objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
       value: 
@@ -2577,6 +2599,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
       value: 
@@ -2650,6 +2676,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
@@ -2907,6 +2937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkerEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091387428347112122, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
+      propertyPath: KarakterLeveli
+      value: 44
+      objectReference: {fileID: 0}
     - target: {fileID: 4951850930044799352, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: player
       value: 
@@ -2980,6 +3014,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486927522763378570, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
+      propertyPath: KarakterLeveli
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 8047800079657221629, guid: 6e3449cc19938324cb8c72ed1e088180, type: 3}
       propertyPath: player
@@ -3547,6 +3585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkerEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4091387428347112122, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
+      propertyPath: KarakterLeveli
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4951850930044799352, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: player
       value: 
@@ -3877,6 +3919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkerEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091387428347112122, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
+      propertyPath: KarakterLeveli
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 4951850930044799352, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: player
       value: 
@@ -4132,6 +4178,10 @@ PrefabInstance:
     - target: {fileID: 3117390462324807811, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: m_Name
       value: WalkerEnemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091387428347112122, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
+      propertyPath: KarakterLeveli
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 4951850930044799352, guid: cbe63546b416bd94dbbea393f1bdfb7a, type: 3}
       propertyPath: player
