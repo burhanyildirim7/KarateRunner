@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 140603459537405040}
   - {fileID: 5127093491527881278}
@@ -42,10 +43,6 @@ PrefabInstance:
     - target: {fileID: 2625042844720804672, guid: 4e8e861d6883a4d329c3fc0f65d81195, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2625042844720804672, guid: 4e8e861d6883a4d329c3fc0f65d81195, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2625042844720804672, guid: 4e8e861d6883a4d329c3fc0f65d81195, type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,17 +106,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zemin1
       objectReference: {fileID: 0}
-    - target: {fileID: 7023168095569808385, guid: 205621c88347641209bdf07ea1fda36a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: aeff74b2a0d6c734aaabc7c768ba32a5, type: 2}
     - target: {fileID: 7637632369141309363, guid: 205621c88347641209bdf07ea1fda36a, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7637632369141309363, guid: 205621c88347641209bdf07ea1fda36a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7637632369141309363, guid: 205621c88347641209bdf07ea1fda36a, type: 3}
       propertyPath: m_LocalPosition.x
