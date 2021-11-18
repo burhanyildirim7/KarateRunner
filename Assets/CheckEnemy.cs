@@ -27,16 +27,37 @@ public class CheckEnemy : MonoBehaviour
 
             StartCoroutine(nameof(endAttackAnimation));
         }
+
+
         if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyController>().enemyLevel <= playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
         {
             playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isAttack", true);
             StartCoroutine(nameof(endAttackAnimation));
         }
+        else if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyController>().enemyLevel > playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
+        {
+            //playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isRunning", false);
+            Debug.Log("Dayak Yedi");
+            playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isHit", true);
+
+            StartCoroutine(nameof(endHitAnimation));
+
+            //playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isHit", false);
+            //playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isRunning", true);
+        }
+
     }
     IEnumerator endAttackAnimation()
     {
         yield return new WaitForSecondsRealtime(0.5f);
         playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isAttack", false);
+
+    }
+
+    IEnumerator endHitAnimation()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isHit", false);
 
     }
 

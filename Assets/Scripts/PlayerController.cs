@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _karakterPaketi;
 
+    [SerializeField] private GameObject _sliderFill;
+
+    [SerializeField] private List<Color> _sliderFillColors = new List<Color>();
+
 
     private int _karakterNumarasi;
 
@@ -92,6 +96,32 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        if (_kusakSlider.value <= 2)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[0];
+        }
+        else if (_kusakSlider.value > 2 && _kusakSlider.value <= 4)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[1];
+        }
+        else if (_kusakSlider.value > 4 && _kusakSlider.value <= 6)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[2];
+        }
+        else if (_kusakSlider.value > 6 && _kusakSlider.value <= 8)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[3];
+        }
+        else if (_kusakSlider.value > 8 && _kusakSlider.value <= 10)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[4];
+        }
+        else
+        {
+
+        }
+
+
         karakterLevelText.text = "Lv. " + _playerLevel.ToString();
     }
     IEnumerator endAttackAnimation()
@@ -133,6 +163,10 @@ public class PlayerController : MonoBehaviour
                     _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
                 }
                 _kusakSlider.value = _toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
+
+
+
+
             }
             else
             {

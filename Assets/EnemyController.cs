@@ -36,8 +36,15 @@ public class EnemyController : MonoBehaviour
             GetComponent<Animator>().SetBool("isAttack", true);
             playerController._toplananKusakSayisi--;
 
+
+
+
+
+
             if (playerController._toplananKusakSayisi % playerController._levelAtlamakIcinGerekenKusakSayisi == 0 && playerController._toplananKusakSayisi > 0)
             {
+                playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isRunning", false);
+
                 playerController._karakterAnimators[playerController._karakterSeviyesi].gameObject.SetActive(false);
                 playerController._karakterSeviyesi--;
                 //PlayerController._playerLevel = PlayerController._playerLevel - 1;
