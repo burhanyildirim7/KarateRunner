@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour
     {
         _oyunSonuElmasDeger = 0;
         //_elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
-        _oyunSonuElmasDeger = (_oyunSonuXDegeri * _toplananElmasSayisi);
+        _oyunSonuElmasDeger = (_oyunSonuXDegeri * _playerLevel);
         //_oyunSonuElmasDeger = _elmasSayisi;
         //PlayerPrefs.SetInt("OyunSonuElmasDeger", _oyunSonuElmasDeger);
         //PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
