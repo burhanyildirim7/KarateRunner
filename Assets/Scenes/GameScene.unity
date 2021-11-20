@@ -3373,8 +3373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd91887c7e2fa48528efffd028291d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iyiToplanabilirDeger: 2
-  "_k\xF6t\xFCToplanabilirDeger": 2
+  _iyiToplanabilirDeger: 5
+  "_k\xF6t\xFCToplanabilirDeger": 5
   _karakterPaketi: {fileID: 2018247884}
   _sliderFill: {fileID: 843408769}
   _sliderFillColors:
@@ -3383,9 +3383,9 @@ MonoBehaviour:
   - {r: 1, g: 0.7019608, b: 0, a: 1}
   - {r: 0.9882353, g: 1, b: 0, a: 1}
   - {r: 0.4117647, g: 1, b: 0, a: 1}
-  _levelAtlamakIcinGerekenKusakSayisi: 10
+  _levelAtlamakIcinGerekenKusakSayisi: 5
   _toplananKusakSayisi: 20
-  kusakLevelCarpani: 2
+  kusakLevelCarpani: 5
   _karakterAnimators:
   - {fileID: 1027709633}
   - {fileID: 64396133}
