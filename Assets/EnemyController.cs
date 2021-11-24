@@ -59,7 +59,8 @@ public class EnemyController : MonoBehaviour
         }
         else if (other.gameObject.tag == "Player" && enemyLevel < playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
         {
-            Invoke("EnemyDead", 0.5f);
+            Invoke("EnemyDead", 0.1f);
+            //EnemyDead();
         }
 
     }

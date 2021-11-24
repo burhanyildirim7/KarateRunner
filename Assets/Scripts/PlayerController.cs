@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
 
     private int _oyunSonuElmasDeger;
 
+    public static int _karakterPuan;
+
+    private KarakterPaketiMovement _karakterPaketiMovement;
+
 
     void Start()
     {
@@ -96,23 +100,23 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (_kusakSlider.value <= 2)
+        if (_kusakSlider.value <= 1)
         {
             _sliderFill.GetComponent<Image>().color = _sliderFillColors[0];
         }
-        else if (_kusakSlider.value > 2 && _kusakSlider.value <= 4)
+        else if (_kusakSlider.value > 1 && _kusakSlider.value <= 2)
         {
             _sliderFill.GetComponent<Image>().color = _sliderFillColors[1];
         }
-        else if (_kusakSlider.value > 4 && _kusakSlider.value <= 6)
+        else if (_kusakSlider.value > 2 && _kusakSlider.value <= 3)
         {
             _sliderFill.GetComponent<Image>().color = _sliderFillColors[2];
         }
-        else if (_kusakSlider.value > 6 && _kusakSlider.value <= 8)
+        else if (_kusakSlider.value > 3 && _kusakSlider.value <= 4)
         {
             _sliderFill.GetComponent<Image>().color = _sliderFillColors[3];
         }
-        else if (_kusakSlider.value > 8 && _kusakSlider.value <= 10)
+        else if (_kusakSlider.value > 4 && _kusakSlider.value <= 5)
         {
             _sliderFill.GetComponent<Image>().color = _sliderFillColors[4];
         }
@@ -148,30 +152,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.tag == "Kusak")
         {
-            if (_playerLevel < 99)
-            {
-                _toplananKusakSayisi++;
 
-                _playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
-
-                if (_toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
-                {
-
-                    _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
-                    _karakterSeviyesi++;
-                    _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
-                    _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
-                }
-                _kusakSlider.value = _toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
-
-
-
-
-            }
-            else
-            {
-                _playerLevel = 99;
-            }
+            KusakFonksiyon();
 
             Destroy(other.gameObject);
         }
@@ -332,6 +314,10 @@ public class PlayerController : MonoBehaviour
             GameController._finishlevel = true;
             _karakterPaketi.transform.position = new Vector3(0, 0, _karakterPaketi.transform.position.z);
             _player.transform.localPosition = new Vector3(0, 0.5f, 0);
+            _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+            _karakterAnimators[_karakterSeviyesi].SetBool("isFinish", true);
+            _karakterPaketiMovement = _karakterPaketi.GetComponent<KarakterPaketiMovement>();
+            _karakterPaketiMovement.KarakterHiziArtir();
 
         }
         else
@@ -345,20 +331,23 @@ public class PlayerController : MonoBehaviour
     {
         _oyunSonuElmasDeger = 0;
         //_elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
-        _oyunSonuElmasDeger = (_oyunSonuXDegeri * _playerLevel);
+        _oyunSonuElmasDeger = (_oyunSonuXDegeri * _karakterPuan);
         //_oyunSonuElmasDeger = _elmasSayisi;
         //PlayerPrefs.SetInt("OyunSonuElmasDeger", _oyunSonuElmasDeger);
         //PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
 
-        _uiController.LevelSonuElmasSayisi(_oyunSonuElmasDeger);
+        _uiController.LevelSonuElmasSayisi(_oyunSonuElmasDeger, _oyunSonuXDegeri);
     }
 
     private void WinScreenAc()
     {
         _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
+        _karakterAnimators[_karakterSeviyesi].SetBool("isFinish", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isIdle", true);
         OyunSonuElmasHesaplama();
         _uiController.WinScreenPanelOpen();
+        _karakterPaketiMovement = _karakterPaketi.GetComponent<KarakterPaketiMovement>();
+        _karakterPaketiMovement.KarakterHiziAzalt();
     }
 
     private void LoseScreenAc()
@@ -367,6 +356,8 @@ public class PlayerController : MonoBehaviour
         // _karakterAnimators[_karakterSeviyesi].SetBool("isDead", true);
         OyunSonuElmasHesaplama();
         _uiController.LoseScreenPanelOpen();
+        _karakterPaketiMovement = _karakterPaketi.GetComponent<KarakterPaketiMovement>();
+        _karakterPaketiMovement.KarakterHiziAzalt();
     }
     public void LevelStart()
     {
@@ -378,6 +369,7 @@ public class PlayerController : MonoBehaviour
         _kusakSlider.value = 0;
         _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
         _karakterSeviyesi = 0;
+        _karakterPuan = 0;
         _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
         _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", false);
         _karakterAnimators[_karakterSeviyesi].SetBool("isDead", false);
@@ -395,4 +387,33 @@ public class PlayerController : MonoBehaviour
         _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
     }
 
+    public void KusakFonksiyon()
+    {
+        _karakterPuan += 10;
+
+        if (_playerLevel < 99)
+        {
+            _toplananKusakSayisi++;
+
+            _playerLevel = _toplananKusakSayisi * kusakLevelCarpani;
+
+            if (_toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi == 0)
+            {
+
+                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(false);
+                _karakterSeviyesi++;
+                _karakterAnimators[_karakterSeviyesi].gameObject.SetActive(true);
+                _karakterAnimators[_karakterSeviyesi].SetBool("isRunning", true);
+            }
+            _kusakSlider.value = _toplananKusakSayisi % _levelAtlamakIcinGerekenKusakSayisi;
+
+
+
+
+        }
+        else
+        {
+            _playerLevel = 99;
+        }
+    }
 }

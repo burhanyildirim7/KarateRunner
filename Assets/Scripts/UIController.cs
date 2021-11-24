@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text _winElmasText;
     [SerializeField] private Text _loseElmasText;
     [SerializeField] private Text _tapToStartElmasText;
+    [SerializeField] private Text _levelSonuXDegeriText;
 
     private int _levelNumber;
 
@@ -27,6 +28,8 @@ public class UIController : MonoBehaviour
     private int _levelSonuElmasSayisi;
 
     private int _oyunBasladi;
+
+    private int _levelSonuXdegeri;
 
     void Start()
     {
@@ -86,6 +89,7 @@ public class UIController : MonoBehaviour
         _gameScreenPanel.SetActive(false);
         _winScreenPanel.SetActive(true);
         _winElmasText.text = _levelSonuElmasSayisi.ToString();
+        _levelSonuXDegeriText.text = "X " + _levelSonuXdegeri.ToString();
     }
 
     public void LoseScreenPanelOpen()
@@ -110,9 +114,10 @@ public class UIController : MonoBehaviour
         _playerController.LevelStart();
     }
 
-    public void LevelSonuElmasSayisi(int deger)
+    public void LevelSonuElmasSayisi(int deger, int xdeger)
     {
         _levelSonuElmasSayisi = deger;
+        _levelSonuXdegeri = xdeger;
     }
 
     public void LevelRestartButton()

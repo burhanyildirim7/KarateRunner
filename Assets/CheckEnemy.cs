@@ -32,6 +32,8 @@ public class CheckEnemy : MonoBehaviour
         if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyController>().enemyLevel <= playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)
         {
             playerController._karakterAnimators[playerController._karakterSeviyesi].SetBool("isAttack", true);
+            PlayerController._karakterPuan += 50;
+            playerController.KusakFonksiyon();
             StartCoroutine(nameof(endAttackAnimation));
         }
         else if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyController>().enemyLevel > playerController._toplananKusakSayisi * playerController.kusakLevelCarpani)

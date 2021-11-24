@@ -6,9 +6,11 @@ public class KarakterPaketiMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
+    private float _firstSpeed;
+
     void Start()
     {
-     
+        _firstSpeed = _speed;
     }
 
 
@@ -22,7 +24,17 @@ public class KarakterPaketiMovement : MonoBehaviour
         {
 
         }
-        
+
+    }
+
+    public void KarakterHiziArtir()
+    {
+        _speed = _speed * 3;
+    }
+
+    public void KarakterHiziAzalt()
+    {
+        _speed = _firstSpeed;
     }
 
 }
